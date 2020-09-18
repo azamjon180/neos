@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <div class="site-section first-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12 text-center">
+            <span class="caption d-block mb-2 font-secondary font-weight-bold">Testimonials</span>
+            <h2 class="site-section-heading text-uppercase text-center font-secondary">Happy Customers</h2>
+          </div>
+        </div>
+        <div class="row">
+          
+          {% for item in testis %}
+
+            <div class="col-md-6 col-lg-6 mb-4">
+              <div class="d-block block-testimony mx-auto text-center">
+                <div class="person w-25 mx-auto mb-4">
+                  <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid rounded-circle w-50 mx-auto">
+                </div>
+                <div>
+                  <h2 class="h5 mb-4">{{ item.name }}</h2>
+                  <blockquote>&ldquo;{{ item.description }}&rdquo;</blockquote>
+                </div>
+              </div>
+            </div>
+
+          {% endfor %}
+          
+        </div>
+      </div>
+    </div>
+
+  {% endblock %}

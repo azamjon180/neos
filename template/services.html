@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Service {% endblock %}
+
+{% block content %}
+    
+  <div class="site-section first-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12 text-center" data-aos="fade">
+            <span class="caption d-block mb-2 font-secondary font-weight-bold">Outstanding Services</span>
+            <h2 class="site-section-heading text-uppercase text-center font-secondary">Love Us Colorlib</h2>
+          </div>
+        </div>
+        <div class="row border-responsive">
+
+          {% for item in service %}
+
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 border-right" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                {{ item.icon | safe }}
+                <h3 class="text-uppercase h4 mb-3">{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="site-section section-counter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="mb-5">
+              <img src="{{ statis.image.url }}" alt="{{ statis.name }}" class="img-fluid">
+            </p>
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <h2 class="site-section-heading mb-3 font-secondary text-uppercase">{{ statis.name }}</h2>
+            <p class="mb-5">{{ statis.description }}</p>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="counter">
+                  <span class="caption">Current Downloads</span>
+                  <span class="number" data-number="{{ statis.price }}">0</span>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="counter">
+                  <span class="caption">Number of Templates</span>
+                  <span class="number" data-number="{{ statis.number }}">0</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  {% endblock %}
