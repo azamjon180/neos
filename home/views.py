@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from base import models
 from django.core.paginator import Paginator
-
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -34,6 +35,7 @@ def home(request):
 	return render(request, template_name, context)
 
 
+@login_required
 def service(request):
 	template_name = 'services.html'
 	service = models.Service.objects.all()
@@ -51,9 +53,15 @@ def about(request):
 	template_name = 'about.html'
 	about = models.About.objects.all()
 	banner = models.Banner.objects.get(link = 'about')
+	teamtitle = models.Message.objects.get(link = 'teamtitle')
+	team = models.Person.objects.filter(category = 'team')
+	statis = models.Product.objects.filter(statis = True).order_by('-id')[0]
 	context = {
 		'about' : about,
-		'banner' : banner
+		'banner' : banner,
+		'teamtitle' : teamtitle,
+		'team' : team,
+		'statis' : statis,
 	}
 	return render(request, template_name, context)
 
@@ -152,3 +160,18 @@ def gallery(request):
 		'banner' : banner,
 	}
 	return render(request, template_name, context)
+
+
+def contactform(request):
+	
+	name = request.POST.get('name')
+	email = request.POST.get('email')
+	phone = request.POST.get('phone')
+	message = request.POST.get('message')
+
+	contact = models.Contact(name = name, email = email, phone = phone, message = message)
+	contact.save()
+
+	messages.success(request, f'{ name } - contact saqlandi!')
+	
+	return redirect('home:contact')

@@ -152,3 +152,17 @@ class Gallery(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
+class Contact(models.Model):
+	name = models.CharField(max_length = 256)
+	email = models.EmailField(null = True, blank = True)
+	phone = models.CharField(max_length = 64, null = True, blank = True)
+	message = models.TextField(null = True, blank = True)
+
+	class Meta:
+		verbose_name = 'Contact'
+
+	def __str__(self):
+		return self.name
+

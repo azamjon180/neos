@@ -24,58 +24,28 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-12" data-aos="fade">
-            <h2 class="site-section-heading text-center text-uppercase">The Team</h2>
+            <h2 class="site-section-heading text-center text-uppercase">{{ teamtitle.title }}</h2>
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-            <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded w-50 mb-4">
-            <h2 class="h5 text-uppercase">Andrew Neel</h2>
-            <span class="d-block mb-4">CEO, Co-Founder</span>
-            <p class="lead">Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            <p>
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-            </p>
-          </div>
-          <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="200">
-            <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded w-50 mb-4">
-            <h2 class="h5 text-uppercase">Aron Knipes</h2>
-            <span class="d-block mb-4">President, Co-Founder</span> 
-            <p class="lead">Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            <p>
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-            </p>
-          </div>
-          <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="300">
-            <img src="images/person_4.jpg" alt="Image" class="img-fluid rounded w-50 mb-4">
-            <h2 class="h5 text-uppercase">Tim Watkins</h2>
-            <span class="d-block mb-4">CEO, Co-Founder</span>
-            <p class="lead">Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            <p>
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-            </p>
-          </div>
-          <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="400">
-            <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded w-50 mb-4">
-            <h2 class="h5 text-uppercase">Nicole Davis</h2>
-            <span class="d-block mb-4">Product Manager</span> 
-            <p class="lead">Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            <p>
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-            </p>
-          </div>
+          
+          {% for item in team %}
+
+            <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+              <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid rounded w-50 mb-4">
+              <h2 class="h5 text-uppercase">{{ item.name }}</h2>
+              <span class="d-block mb-4">{{ item.position }}</span>
+              <p class="lead">{{ item.description }}</p>
+              <p>
+                <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+              </p>
+            </div>
+
+          {% endfor %}
+          
         </div>
       </div>  
     </div>
@@ -84,23 +54,23 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <p class="mb-5"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></p>
+            <p class="mb-5"><img src="{{ statis.image.url }}" alt="{{ statis.name }}" class="img-fluid"></p>
           </div>
           <div class="col-lg-5 ml-auto">
-            <h2 class="site-section-heading mb-3 font-secondary text-uppercase">Free Template by Colorlib</h2>
-            <p class="mb-5">Ullam ut modi cum voluptatibus atque nulla quidem maxime enim animi cupiditate, mollitia. </p>
+            <h2 class="site-section-heading mb-3 font-secondary text-uppercase">{{ statis.name }}</h2>
+            <p class="mb-5">{{ statis.description }}</p>
 
             <div class="row">
               <div class="col-lg-6">
                 <div class="counter">
                   <span class="caption">Current Downloads</span>
-                  <span class="number" data-number="49020">0</span>
+                  <span class="number" data-number="{{ statis.number }}">0</span>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="counter">
                   <span class="caption">Number of Templates</span>
-                  <span class="number" data-number="275">0</span>
+                  <span class="number" data-number="{{ statis.price }}">0</span>
                 </div>
               </div>
             </div>

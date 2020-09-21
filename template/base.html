@@ -111,6 +111,20 @@
         </div>
       </div>
     </div>
+
+    {% if messages %}
+
+      <div class="messages">
+
+        {% for message in messages %}
+
+          <div class="{{ message.tags }}">{{ message }}</div>
+
+        {% endfor %}
+
+      </div>
+      
+    {% endif %}
   
     <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ banner.image.url }});" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="row align-items-center justify-content-center">
