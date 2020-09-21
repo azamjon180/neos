@@ -129,6 +129,26 @@ class Banner(models.Model):
 		return self.title
 
 
+class Message(models.Model):
+	title = models.CharField(max_length = 512)
+	description = models.TextField(null = True, blank = True)
+	image = models.ImageField(upload_to = 'message', null = True, blank = True)
+	link = models.CharField(max_length = 256, null = True, blank = True)
+	active = models.BooleanField(default = False)
+
+	class Meta:
+		verbose_name = 'Message'
+
+	def __str__(self):
+		return self.title
 
 
+class Gallery(models.Model):
+	title = models.CharField(max_length = 256)
+	image = models.ImageField(upload_to = 'gallery', null = True, blank = True)
 
+	class Meta:
+		verbose_name = 'Fotogalereya'
+
+	def __str__(self):
+		return self.title

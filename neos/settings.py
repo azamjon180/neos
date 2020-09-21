@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mptt',
     'ckeditor',
     'ckeditor_uploader',
+    'accounts',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -131,3 +132,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'))
+
+
+LOGIN_REDIRECT_URL = 'home:home'
+LOGOUT_REDIRECT_URL = 'home:blog'
