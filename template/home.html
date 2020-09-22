@@ -77,7 +77,7 @@
                       
                       {% if user.is_authenticated %}
                         
-                        <a href="#">
+                        <a href="{% url 'accounts:profile' %}">
                           <span class="d-inline-block bg-primary text-white btn btn-primary">
                             {{ user.username }}
                           </span>

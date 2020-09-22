@@ -35,7 +35,6 @@ def home(request):
 	return render(request, template_name, context)
 
 
-@login_required
 def service(request):
 	template_name = 'services.html'
 	service = models.Service.objects.all()
